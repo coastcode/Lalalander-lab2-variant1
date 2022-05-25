@@ -1,8 +1,5 @@
 import unittest
-from hypothesis import given
-import hypothesis.strategies as st
 from UnrolledLinkedList import UnrolledLinkedList
-# from UnrolledLinkedList import *
 from UnrolledLinkedList import cons, length, remove
 from UnrolledLinkedList import member, reverse, concat
 from UnrolledLinkedList import to_list, from_list
@@ -86,35 +83,3 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertEqual(res1, True)
         res2 = member(ull, 5)
         self.assertEqual(res2, False)
-
-    # all finished
-    # def test_reversed(self):
-    #     ull = UnrolledLinkedList()
-    #     for i in range(5):
-    #         ull.cons(i)
-    #     iter_string = ''
-    #     for e in ull.reverse():
-    #         iter_string += str(e) + ' '
-    #     self.assertEqual(iter_string, '4 3 2 1 0 ')
-    #
-    # def test_from_list(self):
-    #     ull = UnrolledLinkedList()
-    #     lst = [1, 3, 5, 7]
-    #     res = ull.from_list(lst)
-    #     self.assertEqual(str(res), "{[1, 3, 5, 7]}")
-    #
-    # def test_iterator(self):
-    #     ull = UnrolledLinkedList()
-    #     for i in range(1, 4):
-    #         ull.cons(i)
-    #     arr = []
-    #     for i in ull.iterator():
-    #         arr.append(i)
-    #     self.assertEqual(str(arr), "[1, 2, 3]")
-
-    # @given(strategies.integers(), strategies.integers())
-    # def test_add_commutative(self, a, b):
-    #     self.assertEqual(Foo().add(a, b), Foo().add(b, a))
-
-# if __name__ == '__main__':
-#     unittest.main()

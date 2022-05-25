@@ -73,10 +73,10 @@ class UnrolledLinkedList:
         return True
 
     def __iter__(self) -> Iter:
-        '''
+        """
         Get an iterator
         :return: an object of class Iter
-        '''
+        """
         return Iter(self)
 
     def access_member(self, n):
@@ -88,23 +88,6 @@ class UnrolledLinkedList:
                 n = n - cur_node.len
                 cur_node = cur_node.next
             return cur_node.array[n]
-
-
-def mcopy(orl):  # 返回一个和orl一样的unroll
-    if orl is None:
-        return None
-    else:
-        newarry = UnrolledLinkedList(orl.node_cap)
-        cur_node_new = Node()
-        newarry.head = cur_node_new
-        cur_node = orl.head
-        while cur_node is not None:
-            newnode = Node()
-            newnode.len = cur_node.len
-            for i in range(len(cur_node)):
-                newnode.array[i] = cur_node.array[i]
-            cur_node = cur_node.next
-            newarry
 
 
 def cons(li, value):
