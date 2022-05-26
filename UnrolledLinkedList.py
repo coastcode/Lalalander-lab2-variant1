@@ -239,7 +239,7 @@ def reverse(li: Any) -> Any:
     return new_list
 
 
-def to_list(li: Any) -> typing.list[Any]:
+def to_list(li: Any) -> typing.List[Any]:
     """
     Convert an Unrolled linked list to a list
     :return:
@@ -252,7 +252,7 @@ def to_list(li: Any) -> typing.list[Any]:
     return iter_array
 
 
-def from_list(lst: typing.list[Any]) -> Any:
+def from_list(lst: typing.List[Any]) -> Any:
     """
     Convert to an unrolled linked list from a list
     :param lst: A list need to be converted.
