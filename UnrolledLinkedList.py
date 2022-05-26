@@ -71,15 +71,18 @@ class UnrolledLinkedList:
         else:
             string = "["
             node = self.head
-            while node.next is not None:  # 52
-                for i in range(0, len(node)):  # 53
-                    string += str(node.array[i])  # 54
+            # while node.next is not None:
+            while node is not None:
+                for i in range(0, len(node)):
+                    string += str(node.array[i])
                     string += ", "
-                node = node.next  # 56
-            for i in range(0, len(node) - 1):  # 57
-                string += str(node.array[i])  # 58
+                node = node.next
+            # for i in range(0, len(node) - 1):
+            for i in range(0, node.len - 1):
+                string += str(node.array[i])
                 string += ", "
-            string += str(node.array[len(node) - 1])  # 60
+            # string += str(node.array[len(node) - 1])
+            string += str(node.array[node.len - 1])
             string += "]"
             return string
 
@@ -111,7 +114,7 @@ class UnrolledLinkedList:
             raise ValueError("invalid index")
         else:
             cur_node = self.head
-            while n >= cur_node.len:
+            while cur_node is not None and n >= cur_node.len:
                 n = n - cur_node.len
                 cur_node = cur_node.next
             return cur_node.array[n]
