@@ -7,7 +7,7 @@ from UnrolledLinkedList import filter, map, reduce, empty
 
 
 class TestUnrolledLinkedList(unittest.TestCase):
-    def test_api(self):
+    def test_api(self) -> None:    # 10
         empty = UnrolledLinkedList()
         l1 = cons(cons(empty, 1), None)
         l2 = cons(cons(empty, None), 1)
@@ -44,7 +44,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
             lst.remove(e)
         self.assertEqual(lst, [])
 
-    def test_filter(self):
+    def test_filter(self) -> None:
         ull = UnrolledLinkedList()
         for i in range(7):
             ull = cons(ull, i)
@@ -52,7 +52,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         dl = to_list(res)
         self.assertEqual(dl, [0, 3, 6])
 
-    def test_map(self):
+    def test_map(self) -> None:
         ull = UnrolledLinkedList()
         for i in range(5):
             ull = cons(ull, i)
@@ -60,14 +60,14 @@ class TestUnrolledLinkedList(unittest.TestCase):
         dl = to_list(ans)
         self.assertEqual(dl, [-2, -1, 0, 1, 2])
 
-    def test_reduce(self):
+    def test_reduce(self) -> None:
         ull = UnrolledLinkedList()
         for i in range(1, 6):
             ull = cons(ull, i)
         res = reduce(ull, lambda x, y: x + y, 0)
         self.assertEqual(res, 15)
 
-    def test_empty(self):
+    def test_empty(self) -> None:
         ull = UnrolledLinkedList()
         for i in range(1, 4):
             ull = cons(ull, i)
@@ -75,7 +75,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         res = to_list(res)
         self.assertEqual(res, [])
 
-    def test_member(self):
+    def test_member(self) -> None:
         ull = UnrolledLinkedList()
         for i in range(5):
             ull = cons(ull, i)

@@ -1,23 +1,41 @@
 from typing import Optional, Callable, Any
 from copy import deepcopy
 
+import typing
+
 
 class Node:
-    def __init__(self):
+    def __init__(self) -> None:
+        """
+        Initialize related attributes.
+        :return: No return value
+        """
         self.array = []
         self.next = None
         self.len = 0
 
-    def __len__(self):
+    def __len__(self) -> int:
+        """
+        Gets the size of the array.
+        :return: The size of array
+        """
         return self.len
 
 
 class Iter(object):
-    def __init__(self, ull):
+    def __init__(self, ull: Any) -> None:
+        """
+        Initialize attributes.
+        :param ull: An unrolled linked list.
+        """
         self.ull = ull
         self.iter_n = 0
 
-    def __next__(self):
+    def __next__(self) -> Any:
+        """
+        Implement iteration.
+        :return: A value in object.
+        """
         if self.iter_n < self.ull.len:
             value = self.ull.access_member(self.iter_n)
             self.iter_n += 1
@@ -32,36 +50,45 @@ class UnrolledLinkedList:
     and define related methods.
     """
 
-    def __init__(self, max_cap=50) -> None:
+    def __init__(self, max_cap: int = 50) -> None:
+        """
+        Initialize attributes.
+        :param max_cap: Maximum capacity of a node.
+        """
         self.node_cap = max_cap
         self.len = 0
         self.head = None
         self.tail = None
         self.halfl = max_cap // 2
 
-    def __str__(self):
+    def __str__(self) -> str:  # 42
         """
         String serialization method.
-        :return:
+        :return: A string.
         """
         if self.len == 0:
             return "[]"
         else:
             string = "["
             node = self.head
-            while node.next is not None:
-                for i in range(0, len(node)):
-                    string += str(node.array[i])
+            while node.next is not None:  # 52
+                for i in range(0, len(node)):  # 53
+                    string += str(node.array[i])  # 54
                     string += ", "
-                node = node.next
-            for i in range(0, len(node) - 1):
-                string += str(node.array[i])
+                node = node.next  # 56
+            for i in range(0, len(node) - 1):  # 57
+                string += str(node.array[i])  # 58
                 string += ", "
-            string += str(node.array[len(node) - 1])
+            string += str(node.array[len(node) - 1])  # 60
             string += "]"
             return string
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any):
+        """
+        Whether an object is unrolled linked list
+        :param other: object
+        :return: If equals return True.
+        """
         if not isinstance(other, UnrolledLinkedList):
             return NotImplemented
         elif self.node_cap != other.node_cap:
@@ -79,7 +106,7 @@ class UnrolledLinkedList:
         """
         return Iter(self)
 
-    def access_member(self, n):
+    def access_member(self, n: int) -> Any:
         if n < 0 or n >= self.len:
             raise ValueError("invalid index")
         else:
@@ -90,7 +117,7 @@ class UnrolledLinkedList:
             return cur_node.array[n]
 
 
-def cons(li, value):
+def cons(li, value: Any) -> Any:
     """
     Add a new element by value
     :param li: the list
@@ -107,7 +134,7 @@ def cons(li, value):
         cop.tail.array.append(value)
         cop.tail.len += 1
     else:
-        new_node = Node()
+        new_node = Node()  # 110
         middle = cop.halfl
         new_node.array = cop.tail.array[middle:]
         new_node.len = middle
@@ -121,7 +148,7 @@ def cons(li, value):
     return cop
 
 
-def remove(li, value):
+def remove(li, value: Any) -> Any:
     """
     Remove all elements of the specific value in the list.
     :param li: the list
@@ -132,7 +159,7 @@ def remove(li, value):
     cur_node = cop.head
     if cur_node is None:
         return "The unrolled linked list is empty."
-    elif not member(li, value):
+    elif not member(li, value):  # 135
         assert not member(li, value), "Element is not in the list"
     else:
         while cur_node is not None:
@@ -166,7 +193,7 @@ def remove(li, value):
         return cop
 
 
-def length(li):
+def length(li: Any) -> int:  # 169
     """
     Get the size of unrolled linked list
     :param li: the unrolled linked list
@@ -174,7 +201,7 @@ def length(li):
     return li.len
 
 
-def member(li, value):
+def member(li: Any, value: Any) -> bool:
     """
     Checks whether the given value is a member.
     :param li: the unrolled linked list
@@ -195,7 +222,7 @@ def member(li, value):
         return mem_value
 
 
-def reverse(li):
+def reverse(li: Any) -> Any:
     """
     Reverse the unrolled linked list.
     :return: a new reversed list
@@ -207,12 +234,12 @@ def reverse(li):
         iter_array += node.array
         node = node.next
     for element in reversed(iter_array):
-        new_list = cons(new_list, element)
+        new_list = cons(new_list, element)  # 210
         new_list.len += 1
     return new_list
 
 
-def to_list(li):
+def to_list(li: Any) -> typing.list[Any]:
     """
     Convert an Unrolled linked list to a list
     :return:
@@ -225,7 +252,7 @@ def to_list(li):
     return iter_array
 
 
-def from_list(lst):
+def from_list(lst: typing.list[Any]) -> Any:
     """
     Convert to an unrolled linked list from a list
     :param lst: A list need to be converted.
@@ -238,7 +265,7 @@ def from_list(lst):
     return ull
 
 
-def find(li, predicate):
+def find(li: Any, predicate: Optional[Callable[..., bool]] = None) -> Any:
     """
     Whether the list has specific element by specific predicate.
     :param li: An unrolled linked list.
@@ -257,7 +284,7 @@ def find(li, predicate):
         return False
 
 
-def filter(li, predicate):
+def filter(li: Any, predicate: Optional[Callable[..., bool]] = None) -> Any:
     """
     Filter data that meet specified predicate
     :param li: An unrolled linked list.
@@ -277,7 +304,7 @@ def filter(li, predicate):
         return x
 
 
-def map(li, func: Optional[Callable[..., Any]] = None):
+def map(li: Any, func: Optional[Callable[..., Any]] = None) -> Any:
     """
     Apply a specific function to all elements.
     :param li: An unrolled linked list.
@@ -297,10 +324,12 @@ def map(li, func: Optional[Callable[..., Any]] = None):
     return cop
 
 
-def reduce(li, func: Optional[Callable[..., Any]], ini):
+def reduce(li: Any, func: Optional[Callable[..., Any]], ini: Any = None) -> Any:
     """
     Reduce process elements and build a value by the function.
+    :param li: an unrolled linked list
     :param func: Specified function
+    :param ini: initial state
     :return: The result of process
     """
     if func is None:
@@ -315,14 +344,14 @@ def reduce(li, func: Optional[Callable[..., Any]], ini):
         return value
 
 
-def iterator(lst):
+def iterator(lst: Any) -> Any:
     """
     Convert the unrolled linked list to an iterator object.
     """
     cur = lst.head
     i = 0
 
-    def foo():
+    def foo():  # 325
         nonlocal cur
         nonlocal i
         if cur is None:
@@ -339,12 +368,12 @@ def iterator(lst):
     return foo
 
 
-def empty(li):
+def empty(li: Any) -> Any:
     li.head = None
     return li
 
 
-def concat(li, ull):
+def concat(li: Any, ull: Any) -> Any:
     """
     Concat two unrolled linked lists.
     :param li: An unrolled linked list
