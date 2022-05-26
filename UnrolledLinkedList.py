@@ -324,22 +324,22 @@ def map(li: Any, func: Optional[Callable[..., Any]] = None) -> Any:
     return cop
 
 
-def reduce(li: Any, func: Optional[Callable[..., Any]], ini: Any = None) -> Any:
+def reduce(li: Any, f: Optional[Callable[..., Any]], ini: Any = None) -> Any:
     """
     Reduce process elements and build a value by the function.
     :param li: an unrolled linked list
-    :param func: Specified function
+    :param f: Specified function
     :param ini: initial state
     :return: The result of process
     """
-    if func is None:
+    if f is None:
         return
     else:
         current = li.head
         value = ini
         while current is not None:
             for i in range(len(current.array)):
-                value = func(value, current.array[i])
+                value = f(value, current.array[i])
             current = current.next
         return value
 
