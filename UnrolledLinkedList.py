@@ -10,7 +10,7 @@ class Node:
         Initialize related attributes.
         :return: No return value
         """
-        self.array = []
+        self.array: typing.List[Any] = []
         self.next = None
         self.len = 0
 
@@ -108,12 +108,14 @@ class UnrolledLinkedList:
     def access_member(self, n: int) -> Any:
         if n < 0 or n >= self.len:
             raise ValueError("invalid index")
-        else:
-            cur_node = self.head
-            while cur_node is not None and n >= cur_node.len:
+        # else:
+        cur_node = self.head
+        if cur_node is not None:
+            while n >= cur_node.len:
                 n = n - cur_node.len
                 cur_node = cur_node.next
             return cur_node.array[n]
+        return "[]"
 
 
 def cons(li, value: Any) -> Any:
@@ -133,7 +135,7 @@ def cons(li, value: Any) -> Any:
         cop.tail.array.append(value)
         cop.tail.len += 1
     else:
-        new_node = Node()  # 110
+        new_node = Node()
         middle = cop.halfl
         new_node.array = cop.tail.array[middle:]
         new_node.len = middle
@@ -269,11 +271,11 @@ def find(li: Any, predicate: Optional[Callable[..., bool]] = None) -> Any:
     Whether the list has specific element by specific predicate.
     :param li: An unrolled linked list.
     :param predicate: Specified predicate.
-    :return: True if the list has element that fits the predicate
+    :return: True if the list has element that fits the predicate.
     """
     if li.head is None:
         return "The unrolled linked list is empty."
-    else:
+    if predicate is not None:
         current = li.head
         while current is not None:
             for i in range(len(current.array)):
@@ -292,7 +294,7 @@ def filter(li: Any, predicate: Optional[Callable[..., bool]] = None) -> Any:
     """
     if li.head is None:
         return li
-    else:
+    if predicate is not None:
         x = UnrolledLinkedList()
         current = li.head
         while current is not None:
