@@ -61,7 +61,7 @@ class UnrolledLinkedList:
         self.tail = None
         self.halfl = max_cap // 2
 
-    def __str__(self) -> str:  # 42
+    def __str__(self) -> str:
         """
         String serialization method.
         :return: A string.
@@ -82,7 +82,7 @@ class UnrolledLinkedList:
             string += "]"
             return string
 
-    def __eq__(self, other: Any):
+    def __eq__(self, other: Any) -> Any:
         """
         Whether an object is unrolled linked list
         :param other: object
@@ -118,7 +118,7 @@ class UnrolledLinkedList:
         return "[]"
 
 
-def cons(li, value: Any) -> Any:
+def cons(li: Any, value: Any) -> Any:
     """
     Add a new element by value
     :param li: the list
@@ -149,7 +149,7 @@ def cons(li, value: Any) -> Any:
     return cop
 
 
-def remove(li, value: Any) -> Any:
+def remove(li: Any, value: Any) -> Any:
     """
     Remove all elements of the specific value in the list.
     :param li: the list
@@ -160,7 +160,7 @@ def remove(li, value: Any) -> Any:
     cur_node = cop.head
     if cur_node is None:
         return "The unrolled linked list is empty."
-    elif not member(li, value):  # 135
+    elif not member(li, value):
         assert not member(li, value), "Element is not in the list"
     else:
         while cur_node is not None:
@@ -194,7 +194,7 @@ def remove(li, value: Any) -> Any:
         return cop
 
 
-def length(li: Any) -> int:  # 169
+def length(li: Any) -> Any:
     """
     Get the size of unrolled linked list
     :param li: the unrolled linked list
@@ -352,7 +352,7 @@ def iterator(lst: Any) -> Any:
     cur = lst.head
     i = 0
 
-    def foo():  # 325
+    def foo() -> Any:
         nonlocal cur
         nonlocal i
         if cur is None:
