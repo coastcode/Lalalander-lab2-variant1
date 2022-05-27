@@ -285,7 +285,7 @@ def find(li: Any, predicate: Optional[Callable[..., bool]] = None) -> Any:
         return False
 
 
-def filter(li: Any, predicate: Optional[Callable[..., bool]] = None) -> Any:
+def filter(li: Any, predicate: Optional[Callable[..., Any]] = None) -> Any:
     """
     Filter data that meet specified predicate
     :param li: An unrolled linked list.
