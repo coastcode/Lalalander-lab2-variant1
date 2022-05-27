@@ -7,7 +7,7 @@ from UnrolledLinkedList import filter, map, reduce, empty
 
 
 class TestUnrolledLinkedList(unittest.TestCase):
-    def test_api(self) -> None:    # 10
+    def test_api(self) -> None:
         empty = UnrolledLinkedList()
         l1 = cons(cons(empty, 1), None)
         l2 = cons(cons(empty, None), 1)

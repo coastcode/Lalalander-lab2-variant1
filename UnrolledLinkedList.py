@@ -71,18 +71,14 @@ class UnrolledLinkedList:
         else:
             string = "["
             node = self.head
-            # while node.next is not None:
             while node is not None:
-                for i in range(0, len(node)):
+                for i in range(0, len(node) - 1):
                     string += str(node.array[i])
                     string += ", "
+                string += str(node.array[len(node) - 1])
+                if node.next is not None:
+                    string += ", "
                 node = node.next
-            # for i in range(0, len(node) - 1):
-            for i in range(0, node.len - 1):
-                string += str(node.array[i])
-                string += ", "
-            # string += str(node.array[len(node) - 1])
-            string += str(node.array[node.len - 1])
             string += "]"
             return string
 
@@ -237,7 +233,7 @@ def reverse(li: Any) -> Any:
         iter_array += node.array
         node = node.next
     for element in reversed(iter_array):
-        new_list = cons(new_list, element)  # 210
+        new_list = cons(new_list, element)
         new_list.len += 1
     return new_list
 
