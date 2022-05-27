@@ -6,8 +6,8 @@ enough for educational purposes.
 
 ## Project structure
 
-- `UnrolledLinkedList.py` -- Implementation of `UnrolledLinkedList` class 
-   with basic functions, such as adding and deleting elements, 
+- `UnrolledLinkedList.py` -- Implementation of `UnrolledLinkedList` class
+   with basic functions, such as adding and deleting elements,
    merging objects, etc. features. Stateless.
 - `UnrolledLinkedList_test.py` -- unit and PBT tests for `UnrolledLinkedList`.
 
@@ -17,7 +17,7 @@ enough for educational purposes.
 - Add, delete and find elements in the unrolled linked list.
 - Implements the iteration of the unrolled linked list object.
 - Converts to and from list objects.
-- Perform operations on unrolled linked list objects, such as Filter, Map, 
+- Perform operations on unrolled linked list objects, such as Filter, Map,
   and Reduce based on a given condition or function.
 
 ## Contribution
@@ -36,7 +36,7 @@ enough for educational purposes.
 
 ## Design notes
 
-- According to definition of unrolled linked list, our goal is to design 
-  immutable data structures. In almost all methods, we used a copy of the 
-  original data to modify the data structure, so as to keep the original 
+- According to definition of unrolled linked list, our goal is to design
+  immutable data structures. In almost all methods, we used a copy of the
+  original data to modify the data structure, so as to keep the original
   data structure unchanged and achieve the purpose of immutable operation object.
