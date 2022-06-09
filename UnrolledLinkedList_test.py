@@ -4,7 +4,7 @@ from typing import List, Any
 from hypothesis import given
 import hypothesis.strategies as st
 
-from UnrolledLinkedList import UnrolledLinkedList, iterator
+from UnrolledLinkedList import UnrolledLinkedList
 from UnrolledLinkedList import cons, length, remove
 from UnrolledLinkedList import member, reverse, concat
 from UnrolledLinkedList import to_list, from_list, find
