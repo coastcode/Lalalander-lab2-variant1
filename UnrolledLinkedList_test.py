@@ -51,7 +51,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
 
     @given(a=st.integers(), b=st.integers(),
            c=st.integers(), d=st.integers())
-    def test_cons(self, a, b, c, d) -> None:
+    def test_cons(self, a: int, b: int, c: int, d: int) -> None:
         empty_ull = UnrolledLinkedList()
         ull1 = UnrolledLinkedList()
         ull2 = UnrolledLinkedList()
@@ -81,7 +81,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertEqual(str(ull3), "The unrolled linked list is empty.")
 
     @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_length(self, a, b, c) -> None:
+    def test_length(self, a: int, b: int, c: int) -> None:
         empty_ull = UnrolledLinkedList()
         ull = UnrolledLinkedList()
         ull_ran = UnrolledLinkedList()
@@ -108,7 +108,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertEqual(res3, False)
 
     @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_reverse(self, a, b, c) -> None:
+    def test_reverse(self, a: int, b: int, c: int) -> None:
         ull1 = UnrolledLinkedList()
         ull2 = UnrolledLinkedList()
         for i in range(5):
@@ -122,7 +122,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
 
     @given(a=st.integers(), b=st.integers(),
            c=st.integers(), d=st.integers())
-    def test_tolist(self, a, b, c, d) -> None:
+    def test_tolist(self, a: int, b: int, c: int, d: int) -> None:   # 125
         ull1 = UnrolledLinkedList()
         ull2 = UnrolledLinkedList()
         for i in range(1, 5):
@@ -178,7 +178,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertEqual(res, 15)
 
     @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_empty(self, a, b, c) -> None:
+    def test_empty(self, a: int, b: int, c: int) -> None:
         empty_ull = UnrolledLinkedList()
         ull = UnrolledLinkedList()
         for i in [a, b, c]:
@@ -191,7 +191,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertEqual(res3, [])
 
     @given(a=st.integers(), b=st.integers())
-    def test_concat(self, a, b) -> None:
+    def test_concat(self, a: int, b: int) -> None:  # 94
         empty_ull = UnrolledLinkedList()
         ull1 = UnrolledLinkedList()
         ull1 = cons(ull1, a)
@@ -203,7 +203,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertEqual(str(res2), str([a]))
 
     @given(a=st.integers(), b=st.integers(), c=st.integers())
-    def test_iterator(self, a, b, c) -> None:
+    def test_iterator(self, a: int, b: int, c: int) -> None:  # 206
         lst = [a, b, c]
         ull = from_list(lst)
         tmp = []
@@ -215,7 +215,7 @@ class TestUnrolledLinkedList(unittest.TestCase):
         self.assertRaises(StopIteration, lambda: next(idx))
 
     @given(lst=st.lists(st.integers()))
-    def test_monoid(self, lst) -> None:
+    def test_monoid(self, lst: List[Any]) -> None:
         a = from_list(lst)
         b = UnrolledLinkedList()
         for i in range(5):

@@ -268,7 +268,7 @@ def from_list(lst: typing.List[Any]) -> Any:
     return ull
 
 
-def find(li: Any, predicate: Optional[Callable[..., bool]] = None) -> Any:
+def find(li: Any, predicate: Optional[Callable[..., Any]] = None) -> Any:
     """
     Whether the list has specific element by specific predicate.
     :param li: An unrolled linked list.
