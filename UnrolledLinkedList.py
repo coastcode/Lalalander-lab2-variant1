@@ -108,14 +108,17 @@ class UnrolledLinkedList:
     def access_member(self, n: int) -> Any:
         if n < 0 or n >= self.len:
             raise ValueError("invalid index")
-        # else:
         cur_node = self.head
-        if cur_node is not None:
+        if cur_node is None:
+            return "[]"
+        else:
             while n >= cur_node.len:
                 n = n - cur_node.len
-                cur_node = cur_node.next
+                if cur_node.next is None:
+                    break
+                else:
+                    cur_node = cur_node.next
             return cur_node.array[n]
-        return "[]"
 
 
 def cons(li: Any, value: Any) -> Any:
@@ -161,7 +164,7 @@ def remove(li: Any, value: Any) -> Any:
     if cur_node is None:
         return "The unrolled linked list is empty."
     elif not member(li, value):
-        assert not member(li, value), "Element is not in the list"
+        return "Element is not in the list."
     else:
         while cur_node is not None:
             for i in range(len(cur_node)):
@@ -262,7 +265,6 @@ def from_list(lst: typing.List[Any]) -> Any:
     ull = UnrolledLinkedList()
     for element in lst:
         ull = cons(ull, element)
-        ull.len += 1
     return ull
 
 
@@ -369,12 +371,13 @@ def iterator(lst: Any) -> Any:
     return foo
 
 
-def empty(li: Any) -> Any:
-    li.head = None
-    return li
+def empty(li: Any) -> bool:
+    if li.head is None:
+        return True
+    return False
 
 
-def concat(li: Any, ull: Any) -> Any:
+def concat(li: Any, ull: UnrolledLinkedList) -> Any:
     """
     Concat two unrolled linked lists.
     :param li: An unrolled linked list
@@ -382,10 +385,13 @@ def concat(li: Any, ull: Any) -> Any:
     :return:
     """
     cop1 = deepcopy(li)
-    cop2 = deepcopy(ull)
-    current = cop2.head
-    while current is not None:
-        for i in range(len(current.array)):
-            cop1 = cons(cop1, current.array[i])
-        current = current.next
-    return cop1
+    if ull:
+        cop2 = deepcopy(ull)
+        cur_node = cop2.head
+        while cur_node is not None:
+            for i in range(len(cur_node.array)):
+                cop1 = cons(cop1, cur_node.array[i])
+            cur_node = cur_node.next
+        return cop1
+    else:
+        return cop1
